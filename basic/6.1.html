@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>
+</title></head>
+<body>
+<form method="post" action="test1.php" enctype="multipart/form-data">
+<label>CLICK!</label><br>
+<input type="submit" name="re" value="retrieve all"/><br>
+<input type="submit" name="search" value="search"/><br>
+</form>
+</body>
+</html>
+<?php
+if($_POST){
+$myfile = fopen("studentdetails.txt","r") or die("unable to open a file");
+$fileContent = fread(($myfile),filesize("studentdetails.txt"));
+echo $fileContent,"\n " ;
+$arr1= explode("\n",$fileContent);
+foreach ($arr1 as $row) {
+	$arr = explode("\n",$row);
+	
+
+for($i=0;$i<count($arr);$i++)
+	{
+
+		if(trim($arr[$i])=="bangalore")
+		{
+			echo $arr[$i-2],"\n  ";
+		}
+	}
+}
+
+fclose($myfile);
+}
+?>
+
+
+
